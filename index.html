@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar Sesión</title>
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form id="login-form" action="#" method="post">
+      <div class="form-group">
+        <input type="text" name="username" id="username" placeholder="Usuario" required maxlength="50">
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" id="password" placeholder="Contraseña" required>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Iniciar Sesión">
+      </div>
+      <div class="error-message" id="error-message"></div>
+      <div class="contact-info">
+        <p><img src="https://i.imgur.com/qkjfbm6.jpeg" alt="Número de teléfono celular" style="width: 20px; height: auto; border-radius: 50%;"> 222 534 6246 - 222 254 4766</p>
+        <p><img src="https://i.imgur.com/KTlrcXN.jpeg" alt="Número de teléfono fijo" style="width: 20px; height: auto; border-radius: 50%;"> 222 966 1908</p>
+        <p><img src="https://i.imgur.com/uKunxcQ.jpeg" alt="Correo electrónico" style="width: 20px; height: auto; border-radius: 50%;"> melu0121@yahoo.com.mx</p>
+        <p><img src="https://i.imgur.com/33XisMZ.jpeg" alt="Red social" style="width: 20px; height: auto; border-radius: 50%;"> Despacho Contable E & S</p>
+      </div>
+    </form>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="controllers/login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      var username = this.elements['username'].value;
+      var password = this.elements['password'].value;
+
+      if (username.length > 50) {
+        document.getElementById('error-message').innerText = 'El usuario no puede tener más de 50 caracteres';
+        event.preventDefault();
+        return;
+      }
+
+      document.getElementById('loader-container').style.display = 'flex';
+      // Simulación de una petición de inicio de sesión
+      setTimeout(function() {
+        // Comprobar las credenciales, mostrar mensaje de error si son incorrectas
+        document.getElementById('loader-container').style.display = 'none';
+        document.getElementById('error-message').innerText = 'Datos incorrectos. Inténtelo de nuevo.';
+      }, 2000);
+
+      event.preventDefault();
+    });
+  </script>
+</body>
+</html>
